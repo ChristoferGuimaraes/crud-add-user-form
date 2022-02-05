@@ -5,7 +5,7 @@ const services = require("../services/render");
 const controller = require("../controller/controller");
 
 /**
- * @description Root Rout
+ * @description Root Route
  * @method GET /
  */
 

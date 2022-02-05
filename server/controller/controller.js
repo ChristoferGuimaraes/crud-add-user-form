@@ -20,7 +20,8 @@ exports.create = (req, res) => {
   user
     .save(user)
     .then((data) => {
-      res.send(data);
+      // res.send(data);
+      res.redirect("/add-user");
     })
     .catch((err) => {
       res.status(500).send({
@@ -48,15 +49,17 @@ exports.find = (req, res) => {
   if (req.query.id) {
     const id = req.query.id;
 
-    Userdb.findById(id).then((data) => {
-      if (!data) {
-        res.status(404).send({ message: "Not found user with id" + id });
-      } else {
-          res.send(data)
-      }
-    }).catch(err => {
-        res.status(500).send({message: "Error retrieving user with id" + id})
-    })
+    Userdb.findById(id)
+      .then((data) => {
+        if (!data) {
+          res.status(404).send({ message: "Not found user with id" + id });
+        } else {
+          res.send(data);
+        }
+      })
+      .catch((err) => {
+        res.status(500).send({ message: "Error retrieving user with id" + id });
+      });
   } else {
     Userdb.find()
       .then((user) => {
