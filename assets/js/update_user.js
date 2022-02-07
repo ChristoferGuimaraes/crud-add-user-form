@@ -38,7 +38,6 @@ formUpdate.onsubmit = (e) => {
   unindexed_array.map((array) => {
     data[array["name"]] = array.value;
   });
-  console.log(data);
 
   var req = {
     url: `http://localhost:3000/api/users/${data.id}`,
